@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>App Enquetes</title>
+    </head>
+    <body>
+        <style>
+            body{font-family: 'Josefin Sans', sans-serif};
+        </style>
+
+        <h1>Enquetes - DSWEB</h1>
+        {% if ultima_pergunta_lista %}
+            <h3>Lista das enquetes cadastradas</h3>
+            <ul>
+            {% for pergunta in ultima_pergunta_lista %} <!-- {{ é escrita -->
+                <li><a href="/enquetes/{{ pergunta.id }}">{{ pergunta.texto_perg }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhuma enquete disponivel.</p>
+        {% endif %}
+
+    </body>
+</html>

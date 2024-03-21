@@ -1,6 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+
+from .models import Pergunta
 
 def index(request):
-    return HttpResponse("<h1>Aplicação de enquetes - DSWEB 2024.1</h1> <br> <h2>20231014040013</h2> <br> <h3>Ryan Pinheiro</h3>")
+    ultima_pergunta_lista = Pergunta.objects.order_by("-data_pub")
+    contexto = {"ultima_pergunta_lista": ultima_pergunta_lista,} #httpresponde(template.render(contexto, request) abaixo
+    return render(request, "enquetes/index.html", contexto)
+
+def detalhes(request, pergunta_id):
+    resultado = "Detalhes da enquete de numero %s"
+    return HttpResponse(resultado %pergunta_id)
+
+def resultado(request, pergunta_id):
+    resultado = "Resultado da enquete de numero %s"
+    return HttpResponse(resultado %pergunta_id)
+
+
+def votacao(request, pergunta_id):
+    resultado = "Votação da enquete de numero %s"
+    return HttpResponse(resultado %pergunta_id)
