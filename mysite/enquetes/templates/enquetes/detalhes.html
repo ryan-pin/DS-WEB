@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>App Enquetes</title>
+    </head>
+    <body>
+        <h1>Detalhes Enquetes - DSWEB</h1>
+        <h2>Enquete #{{ enquete.id }}</h2>
+        <h2>{{ enquete.texto_perg }}</h2>
+        <h3>{{ enquete.data_pub }}</h3>
+        <p>Escolha uma alternativa:</p>
+        <ul>
+        {% for alternativa in enquete.alternativa_set.all %}
+            <li> {{ alternativa.texto_alt }}</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
