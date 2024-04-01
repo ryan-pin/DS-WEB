@@ -8,16 +8,22 @@
         </style>
 
         <h1>Enquetes - DSWEB</h1>
+        <figure>
+            <img src="https://media.tenor.com/bnnRu6-d5zYAAAAM/ninaj.gif" alt="emoji digitando" style="width:250px;height:250px;">
+        </figure>
         {% if ultima_pergunta_lista %}
             <h3>Lista das enquetes cadastradas</h3>
             <ul>
             {% for pergunta in ultima_pergunta_lista %} <!-- {{ é escrita -->
-                <li><a href="/enquetes/{{ pergunta.id }}">{{ pergunta.texto_perg }}</a></li>
+                <li><a href="{% url 'enquetes:detalhes' pergunta.id %}">{{ pergunta.texto_perg }}</a></li>
             {% endfor %}
             </ul>
         {% else %}
             <p>Nenhuma enquete disponivel.</p>
         {% endif %}
 
+
     </body>
 </html>
+
+<!-- x -->

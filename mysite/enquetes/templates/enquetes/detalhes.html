@@ -1,4 +1,7 @@
 <html>
+    <style>
+            body{font-family: 'Josefin Sans', sans-serif};
+    </style>
     <head>
         <title>App Enquetes</title>
     </head>
@@ -7,11 +10,27 @@
         <h2>Enquete #{{ enquete.id }}</h2>
         <h2>{{ enquete.texto_perg }}</h2>
         <h3>{{ enquete.data_pub }}</h3>
+
+        {% if error %}
+            <p><b>{{ error }}</b></p>
+        {% endif %}
+
         <p>Escolha uma alternativa:</p>
-        <ul>
-        {% for alternativa in enquete.alternativa_set.all %}
-            <li> {{ alternativa.texto_alt }}</li>
-        {% endfor %}
-        </ul>
+        <form action="{% url 'enquetes:votacao' enquete.id %}" method="post">
+            {% csrf_token %}
+            <ul>
+                {% for alternativa in enquete.alternativa_set.all %}
+                <li><input type="radio" name="escolha" value="{{ alt.id }}"
+                        id="alt{{ forloop.counter }}"/>
+                        <label>
+                            {{ alternativa.texto_alt }}
+                        </label>
+                </li>
+                {% endfor %}
+                <input type="submit"  value="Votar"/>
+            </ul>
+        </form>
+        <hr>
+        <a href="{% url 'enquetes:index'%}">Voltar</a>
     </body>
 </html>
