@@ -1,0 +1,47 @@
+<html>
+    <style>
+            body{
+                font-family: 'Josefin Sans', sans-serif;
+                background-color:#F8FAFA;
+            }
+            li{
+                list-style: none;
+                outline: unset;
+                padding: 20px ;
+                margin: 10px;
+                background-color:#d6d6d6 ;
+                border: transparent;
+                border-radius: 3px;
+                font-weight: bold;
+                width: 300px;
+            }
+    </style>
+    <head>
+        <title>App Enquetes</title>
+    </head>
+    <body>
+        <h1>Resultado - DSWEB</h1>
+        <h2>Enquete #{{ enquete.id }}</h2>
+        <h3>Voto computado com sucesso!!!</h3>
+        <figure>
+            <img src="https://c.tenor.com/arqlNu8gyJYAAAAC/tenor.gif" alt="gato pulando feliz" style="height:300px;">
+        </figure>
+        <h2>{{ enquete.texto_perg }}</h2>
+        <h3>{{ enquete.data_pub }}</h3>
+
+
+        <p>Quantidade de votos por alternativas:</p>
+            <ul>
+                {% for alternativa in enquete.alternativa_set.all %}
+                <li>
+                    {{ alternativa.texto_alt }} ==> {{ alternativa.qtd_votos }}
+                    voto{{ alternativa.qtd_votos | pluralize }}
+                </li>
+                {% endfor %}
+            </ul>
+        </form>
+        <hr>
+        <a href="{% url 'enquetes:detalhes' enquete.id %}"> Votar Novamente</a> |
+        <a href="{% url 'enquetes:index'%}">Voltar</a>
+    </body>
+</html>

@@ -1,6 +1,21 @@
 <html>
     <style>
-            body{font-family: 'Josefin Sans', sans-serif};
+            body{
+                font-family: 'Josefin Sans', sans-serif;
+                background-color:#F8FAFA;
+            }
+            li{
+                list-style: none;
+                outline: unset;
+                padding: 20px ;
+                margin: 10px;
+                background-color:#d6d6d6 ;
+                border: transparent;
+                border-radius: 3px;
+                font-weight: bold;
+                width: 200px;
+            }
+
     </style>
     <head>
         <title>App Enquetes</title>
@@ -11,8 +26,18 @@
         <h2>{{ enquete.texto_perg }}</h2>
         <h3>{{ enquete.data_pub }}</h3>
 
+        {% if not error %}
+            <figure>
+                <img src="https://media1.tenor.com/m/rsb3KR6JbQIAAAAC/emoji-thinking.gif" alt="emoji pensando" style="width:250px;">
+            </figure>
+        {% endif %}
+
+
         {% if error %}
-            <p><b>{{ error }}</b></p>
+            <h3 style="color:red;"><b>ERROR: {{ error }}</b></h3>
+            <figure>
+                <img src="https://media1.tenor.com/m/pFz1Q12_hXEAAAAd/cat-holding-head-cat.gif" alt="gato triste pelo erro" style="width:250px;">
+            </figure>
         {% endif %}
 
         <p>Escolha uma alternativa:</p>
@@ -20,7 +45,7 @@
             {% csrf_token %}
             <ul>
                 {% for alternativa in enquete.alternativa_set.all %}
-                <li><input type="radio" name="escolha" value="{{ alt.id }}"
+                <li><input type="radio" name='escolha' value="{{ alternativa.id }}"
                         id="alt{{ forloop.counter }}"/>
                         <label>
                             {{ alternativa.texto_alt }}
