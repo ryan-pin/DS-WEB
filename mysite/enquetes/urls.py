@@ -3,8 +3,8 @@ from django.urls import path
 
 app_name = "enquetes"
 urlpatterns = [ #URL /enquetes/ -> lista geral das enquetes
-    path("", views.index, name="index"),
-    path("<int:pergunta_id>/detalhes/", views.detalhes, name="detalhes"),
-    path("<int:pergunta_id>/resultado", views.resultado, name="resultado"),
-    path("<int:pergunta_id>/votacao", views.votacao, name= "votacao"),
+    path("", views.IndexView.as_view(), name="index"),
+    path("<int:pk>/", views.DetalhesView.as_view(), name="detalhes"),
+    path("<int:pk>/resultado/", views.ResultadoView.as_view(), name="resultado"),
+
 ]
