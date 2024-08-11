@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("enquetes/", include("enquetes.urls")),
     path("", include("raiz.urls")),
+    path("acervo/", include("acervo.urls")),
 ]

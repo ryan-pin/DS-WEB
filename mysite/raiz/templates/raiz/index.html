@@ -1,23 +1,8 @@
-<html>
-    <style>
-            body{
-                font-family: 'Josefin Sans', sans-serif;
-                background-color:#F8FAFA;
-            }
-            li{
-                list-style: none;
-                outline: unset;
-                padding: 20px ;
-                margin: 10px;
-                background-color:#d6d6d6 ;
-                border: transparent;
-                border-radius: 3px;
-                font-weight: bold;
-                width: 300px;
-            }
-    </style>
+{% load static %}
 
+<html>
     <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'enquetes/css/raiz.css' %}">
         <title>Home Page? >o.o> DSWEB</title>
     </head>
     <body>
@@ -28,6 +13,9 @@
         <h2> Aplicações criadas:</h2>
         <ol>
             <li><a href="/enquetes/" = > Aplicação de enquetes </a></li>
+        </ol>
+        <ol>
+            <li><a href="/acervo/" = > Aplicação de acervo pessoal </a></li>
         </ol>
     </body>
 </html>

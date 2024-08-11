@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['ryanpine.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'acervo.apps.AcervoConfig',
     'raiz.apps.RaizConfig',
     'enquetes.apps.EnquetesConfig',
     'django.contrib.admin',

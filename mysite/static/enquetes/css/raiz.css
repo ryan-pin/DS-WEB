@@ -12,10 +12,7 @@ a{
     font-size:18px;
 }
 
-ul{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+ol{
     margin:auto;
     width:350px;
     padding:0;

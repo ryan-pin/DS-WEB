@@ -15,11 +15,41 @@ label{
     color:#000000;
 }
 
+ul{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin:auto;
+    width:200px;
+    padding:0;
+}
+
+#botao{
+    width: 150px;
+    margin: 1em auto;
+    font-weight: bold;
+    border-radius: 25px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #F8FAFA;
+    border: 3px solid #666;
+    transition: 0.5s;
+    padding:20px;
+
+}
+
+#botao:hover{
+    background-color: #d6d6d6;
+    color: #fff;
+    transition: 0.5s;
+}
+
+
 li{
     list-style: none;
     outline: unset;
     padding: 20px ;
-    margin: 10px;
+    margin-top: 10px;
     background-color:#d6d6d6 ;
     border: transparent;
     border-radius: 3px;
