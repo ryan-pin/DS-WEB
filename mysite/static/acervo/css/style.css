@@ -62,13 +62,22 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-.container_livro{
-    display:flex;
-    flex-direction:row;
+.container_livro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
 }
 
-.livro{
-    padding:10px;
+.livro {
+    flex: 0 1 calc(33.333% - 20px);
+    margin: 10px;
+    text-align: center;
+}
+
+.livro img {
+    max-width: 100%;
+    height: auto;
 }
 
 footer {
