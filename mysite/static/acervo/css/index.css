@@ -6,6 +6,15 @@ body {
     color:#ffff;
 }
 
+.container_livro{
+    display:flex;
+    flex-direction:row;
+}
+
+.livro{
+    padding:10px;
+}
+
 a{
     color:#666;
     text-decoration: none;

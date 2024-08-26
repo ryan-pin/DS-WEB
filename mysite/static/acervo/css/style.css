@@ -1,0 +1,82 @@
+/* RESET CSS */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/* BASE */
+
+:root{
+    --color-fundo2:#F8FAFA;
+    --color-header: #34605C;
+    --color-escolha:#3880a1;
+    --color-amarelo: #FED436;
+    --color-azul-esc: #265474;
+    --color-preto:#000000;
+    --color-branco:#ffff;
+    --color-offwhite:#f7f7f7;
+    --color-azul:#5E90C2;
+    --color-cinza-escuro:#666;
+}
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color:var(--color-offwhite);
+    text-align: center;
+}
+h2{
+    padding-bottom: 20px;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+h1 a {
+    color: #fff;
+    text-decoration: none;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container_livro{
+    display:flex;
+    flex-direction:row;
+}
+
+.livro{
+    padding:10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

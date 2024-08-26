@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Lista de Livros{% endblock %}
 
 {% block content %}
-<h2>Bem vindo ao seu acervo pessoal</h2>
-<figure>
-        <img src="https://gifdb.com/images/high/surprised-emoji-reading-a-book-z6g8tfhysjh16poh.gif" alt="emoji lendo" style="width:250px;height:250px;">
-</figure>
-<h2>Livros cadastrados</h3>
+<h2>Livros Registrados</h2>
 <ul class = "container_livros">
     {% for livro in livros %}
         <li class="livro">
