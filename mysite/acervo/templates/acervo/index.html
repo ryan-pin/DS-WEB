@@ -8,20 +8,28 @@
         <img src="https://gifdb.com/images/high/surprised-emoji-reading-a-book-z6g8tfhysjh16poh.gif" alt="emoji lendo" style="width:250px;height:250px;">
 </figure>
 <h2>Livros cadastrados</h3>
-<ul class = "container_livros">
-    {% for livro in livros %}
-        <li class="livro">
-            <h3>{{ livro.nome }}</h3>
-            <p>Autor: {{ livro.autor }}</p>
-            <p>Ano: {{ livro.ano }}</p>
-            {% if livro.foto_capa %}
-                <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
-            {% else %}
-                <p>Imagem não disponível.</p>
-            {% endif %}
-        </li>
-    {% empty %}
-        <li>Não há livros registrados.</li>
-    {% endfor %}
-</ul>
+<container>
+    <ul>
+        {% for livro in livros %}
+            <li class="livro">
+                <h3>{{ livro.nome }}</h3>
+                <p>Autor: {{ livro.autor }}</p>
+                <p>Ano: {{ livro.ano }}</p>
+                {% if livro.foto_capa %}
+                    <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
+                {% else %}
+                    <p>Imagem não disponível.</p>
+                {% endif %}
+                {% if livro.disponivel == true %}
+                    <button>Disponivel</button>
+                {% else %}
+                    <button>Indisponivel</button>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Não há livros registrados.</li>
+        {% endfor %}
+    </ul>
+</container>
+
 {% endblock %}
