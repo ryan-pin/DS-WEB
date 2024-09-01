@@ -20,10 +20,10 @@
                 {% else %}
                     <p>Imagem não disponível.</p>
                 {% endif %}
-                {% if livro.disponivel == true %}
-                    <button>Disponivel</button>
+                {% if livro.disponivel %}
+                    <button class="btn btn-success">Disponível</button>
                 {% else %}
-                    <button>Indisponivel</button>
+                    <button class="btn btn-danger">Indisponível</button>
                 {% endif %}
             </li>
         {% empty %}

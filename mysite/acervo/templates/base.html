@@ -12,9 +12,10 @@
             <ul>
                 <li><a href="{% url 'acervo:index' %}">Home</a></li>
                 <li><a href="{% url 'acervo:lista' %}">Livros</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="{% url 'acervo:cadastrar-livro' %}">Cadastrar Livro</a></li>
+                <li><a href="#">Cadastrar Contato</a></li>
                 <li><a href="https://portal.ifrn.edu.br" class="if">IFRN</a></li>
+                <li><a href="#">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -26,7 +27,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Ryan Pinheiro - Tads, Todos os direitos reservados.</p>
+        <p>&copy; 2024 Ryan Pinheiro/Tads/IFRN - 2024. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>

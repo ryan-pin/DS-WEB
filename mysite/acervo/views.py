@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 from django.views import View
 from .models import Livro, Item_pessoal
+from .forms import LivroForm
 
 # Create your views here.
 
@@ -20,3 +21,13 @@ class ItemView(View):
 def lista_livros(request):
     livros = Livro.objects.all()
     return render(request, 'acervo/listar_livros.html', {'livros': livros})
+
+
+## FORMS ##
+
+class LivroCreateView(CreateView):
+    model = Livro
+    form_class = LivroForm
+    template_name = 'cadastralivro.html'
+    success_url = reverse_lazy('acervo:index')
+

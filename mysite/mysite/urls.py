@@ -21,4 +21,5 @@ urlpatterns = [
     path("enquetes/", include("enquetes.urls")),
     path("", include("raiz.urls")),
     path("acervo/", include("acervo.urls")),
+    path("accounts/", include("django.contrib.auth.urls"))
 ]
