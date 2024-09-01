@@ -4,20 +4,22 @@
 
 {% block content %}
 <h2>Livros Registrados</h2>
-<ul class = "container_livros">
-    {% for livro in livros %}
+<ul class="container_livros">
+    <container>
+        {% for livro in livros %}
         <li class="livro">
             <h3>{{ livro.nome }}</h3>
             <p>Autor: {{ livro.autor }}</p>
             <p>Ano: {{ livro.ano }}</p>
             {% if livro.foto_capa %}
-                <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
+            <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
             {% else %}
-                <p>Imagem não disponível.</p>
+            <p>Imagem não disponível.</p>
             {% endif %}
         </li>
-    {% empty %}
+        {% empty %}
         <li>Não há livros registrados.</li>
-    {% endfor %}
+        {% endfor %}
+    </container>
 </ul>
 {% endblock %}
