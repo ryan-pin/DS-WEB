@@ -2,8 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.views import View
-from .models import Livro, Item_pessoal
-from .forms import LivroForm
+from .models import Livro, Item_pessoal, ContatoPessoal
+from .forms import LivroForm, ContatoPessoalForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 # Create your views here.
 
@@ -25,9 +28,18 @@ def lista_livros(request):
 
 ## FORMS ##
 
+@method_decorator(login_required, name='dispatch')
 class LivroCreateView(CreateView):
     model = Livro
     form_class = LivroForm
     template_name = 'cadastralivro.html'
     success_url = reverse_lazy('acervo:index')
+
+@method_decorator(login_required, name='dispatch')
+class ContatoCreateView(CreateView):
+    model = ContatoPessoal
+    form_class = ContatoPessoalForm
+    template_name = 'cadastracontato.html'
+    success_url = reverse_lazy('acervo:index')
+
 

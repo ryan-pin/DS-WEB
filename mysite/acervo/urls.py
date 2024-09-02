@@ -10,4 +10,6 @@ urlpatterns = [
     path('item/<int:pk>/', views.ItemView.as_view(), name='item'),
     path('list', views.lista_livros, name='lista'),
     path('cad-livro/', views.LivroCreateView.as_view(), name='cadastrar-livro'),
+    path('cad-contato/', views.ContatoCreateView.as_view(), name='cadastrar-contato'),
+#    path('login/', views.CustomLoginView.as_view(), name='login')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

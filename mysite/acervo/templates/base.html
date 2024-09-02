@@ -13,9 +13,16 @@
                 <li><a href="{% url 'acervo:index' %}">Home</a></li>
                 <li><a href="{% url 'acervo:lista' %}">Livros</a></li>
                 <li><a href="{% url 'acervo:cadastrar-livro' %}">Cadastrar Livro</a></li>
-                <li><a href="#">Cadastrar Contato</a></li>
+                <li><a href="{% url 'acervo:cadastrar-contato' %}">Cadastrar Contato</a></li>
                 <li><a href="https://portal.ifrn.edu.br" class="if">IFRN</a></li>
-                <li><a href="#">Login</a></li>
+                {% if user.is_authenticated %}
+                    {{ user.username }} (<a href="{% url 'logout' %}?next={% url 'acervo:index' %}">logout</a>)
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+
+
+
             </ul>
         </nav>
     </header>
