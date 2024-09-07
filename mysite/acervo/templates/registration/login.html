@@ -5,7 +5,7 @@
         <h2>Iniciar sessão</h2>
         {% csrf_token %}
         {{form}}
-        <button type="submit">Login</button>
+        <button type="submit" id="botao">Login</button>
         <input type="hidden" name="next" value="{{ next }}"/>
         <p> Nao tem uma conta? Crie uma <a href="/register">aqui</a></p>
     </form>
