@@ -14,9 +14,10 @@
             <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
             
             {% if livro.disponivel %}
-                <a href="{% url 'acervo:emprestar-livro' livro.id %}">Pegar Emprestado</a>
+                <a href="{% url 'acervo:emprestar-livro' livro.id %}" class="btn">Pegar Emprestado</a>
             {% else %}
-                <p>Indisponível (emprestado para {{ livro.contato_pessoal }})</p>
+                <button class="btn-danger"> Indisponivel</button>
+                <p>(emprestado para {{ livro.contato_pessoal }})</p>
             {% endif %}
         </li>
         {% empty %}

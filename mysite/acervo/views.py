@@ -25,9 +25,9 @@ class ItemView(View):
 
 
 class Listarlivros(View):
-    def lista_livros(request):
+    def get(self, request, *args, **kwargs):
         livros = Livro.objects.all()
-        return render(request, 'acervo/listar_livros.html', {'livros': livros})
+        return render(request, "acervo/listar_livros.html", {'livros': livros})
 
 
 class EmprestimoLivroView(UpdateView):

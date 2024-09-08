@@ -8,7 +8,7 @@ class ContatoPessoal(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.PROTECT)
 
     def __str__(self): #overwrite
-        return "{} - {} ({})".format(self.email, self.telefone, self.id)
+        return "{} ".format(self.email)
 
 class Livro(models.Model):
     nome = models.CharField(max_length = 100)
