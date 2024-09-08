@@ -16,7 +16,7 @@
                 <li><a href="{% url 'acervo:cadastrar-contato' %}">Cadastrar Contato</a></li>
                 <li><a href="https://portal.ifrn.edu.br" class="if">IFRN</a></li>
                 {% if user.is_authenticated %}
-                    {{ user.username }} (<a href="{% url 'logout' %}?next={% url 'acervo:index' %}">logout</a>)
+                    {{ user.username }} (<a href="{% url 'logout' %}?next={% url 'acervo:index' %}" class="logout">logout</a>)
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}
