@@ -23,16 +23,18 @@ class ItemView(View):
         item = get_object_or_404(Item_pessoal, pk=id_item)
         return render(request, "acervo/item.html", {"item":item})
 
-def lista_livros(request):
-    livros = Livro.objects.all()
-    return render(request, 'acervo/listar_livros.html', {'livros': livros})
+
+class Listarlivros(View):
+    def lista_livros(request):
+        livros = Livro.objects.all()
+        return render(request, 'acervo/listar_livros.html', {'livros': livros})
 
 
 class EmprestimoLivroView(UpdateView):
     model = Livro
     form_class = EmprestimoLivroForm
     template_name = 'emprestarlivro.html'
-    success_url = reverse_lazy('lista')  # Redirecionar para a lista de livros ou outro lugar
+    success_url = reverse_lazy('acervo:index')  # Redirecionar para a lista de livros ou outro lugar
 
     def form_valid(self, form):
         livro = form.save(commit=False)
@@ -57,4 +59,7 @@ class ContatoCreateView(CreateView):
     template_name = 'cadastracontato.html'
     success_url = reverse_lazy('acervo:index')
 
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
