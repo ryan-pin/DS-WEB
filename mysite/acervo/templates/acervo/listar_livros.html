@@ -8,11 +8,10 @@
     <container>
         {% for livro in livros %}
         <li class="livro">
+            <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
             <h3>{{ livro.nome }}</h3>
             <p>Autor: {{ livro.autor }}</p>
-            <p>Ano: {{ livro.ano }}</p>
-            <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
-            
+            <p style="font-size: 12px;">Ano: {{ livro.ano }}</p>
             {% if livro.disponivel %}
                 <a href="{% url 'acervo:emprestar-livro' livro.id %}" class="btn">Pegar Emprestado</a>
             {% else %}

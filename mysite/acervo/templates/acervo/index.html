@@ -14,14 +14,14 @@
         <container>
             {% for livro in livros %}
             <li class="livro">
-                <h3>{{ livro.nome }}</h3>
-                <p>Autor: {{ livro.autor }}</p>
-                <p>Ano: {{ livro.ano }}</p>
                 {% if livro.foto_capa %}
                 <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
                 {% else %}
                 <p>Imagem não disponível.</p>
                 {% endif %}
+                <h3>{{ livro.nome }}</h3>
+                <p>Autor: {{ livro.autor }}</p>
+                <p style="font-size: 12px;">Ano: {{ livro.ano }}</p>
                 {% if livro.disponivel %}
                 <a href="{% url 'acervo:emprestar-livro' livro.id %}" class="btn">Disponível</a>
                 {% else %}

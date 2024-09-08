@@ -132,11 +132,11 @@ import os
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 #STATIC_ROOT = '/home/ryanpine/mysite/static'
-STATICFILES_DIRS = [ BASE_DIR / "static", ]
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-#login redirect 
+#login redirect
 LOGIN_REDIRECT_URL = '/acervo/'
 
-#logout redirect 
+#logout redirect
 LOGOUT_REDIRECT_URL = '/acervo/'
