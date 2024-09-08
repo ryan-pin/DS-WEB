@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<form method="post">
+    <h2>Empréstimo de Livro - {{ livro.titulo }}</h2>
+    <div>
+        <p><strong>Autor:</strong> {{ object.autor }}</p>
+        <p><strong>Ano de Publicação:</strong> {{ object.ano }}</p>
+
+        {% if object.foto_capa %}
+        <p><strong>Capa do Livro:</strong></p>
+        <img src="{{ object.foto_capa.url }}" alt="Capa de {{ object.nome }}" style="max-width: 200px;">
+        {% endif %}
+    </div>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" id="botao">Emprestar Livro</button>
+</form>
+
+<a href="{% url 'acervo:lista' %}">Voltar à lista de livros</a>
+{% endblock %}

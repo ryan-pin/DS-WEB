@@ -23,7 +23,7 @@
                 <p>Imagem não disponível.</p>
                 {% endif %}
                 {% if livro.disponivel %}
-                <button class="btn">Disponível</button>
+                <a href="{% url 'acervo:emprestar-livro' livro.id %}" class="btn">Disponível</a>
                 {% else %}
                 <button class="btn-danger">Indisponível</button>
                 {% endif %}

@@ -11,10 +11,12 @@
             <h3>{{ livro.nome }}</h3>
             <p>Autor: {{ livro.autor }}</p>
             <p>Ano: {{ livro.ano }}</p>
-            {% if livro.foto_capa %}
             <img src="{{ livro.foto_capa.url }}" alt="{{ livro.nome }}" style="max-width: 200px;">
+            
+            {% if livro.disponivel %}
+                <a href="{% url 'acervo:emprestar-livro' livro.id %}">Pegar Emprestado</a>
             {% else %}
-            <p>Imagem não disponível.</p>
+                <p>Indisponível (emprestado para {{ livro.contato_pessoal }})</p>
             {% endif %}
         </li>
         {% empty %}
