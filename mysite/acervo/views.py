@@ -7,7 +7,9 @@ from .forms import LivroForm, ContatoPessoalForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from .forms import EmprestimoLivroForm
+from django.contrib.auth.models import User
+from .forms import EmprestimoLivroForm, RegistroUsuarioForm
+from django.contrib.auth import login, authenticate
 
 
 # Create your views here.
@@ -34,16 +36,32 @@ class EmprestimoLivroView(UpdateView):
     model = Livro
     form_class = EmprestimoLivroForm
     template_name = 'emprestarlivro.html'
-    success_url = reverse_lazy('acervo:index')  # Redirecionar para a lista de livros ou outro lugar
+    success_url = reverse_lazy('acervo:index')
 
     def form_valid(self, form):
         livro = form.save(commit=False)
-        livro.disponivel = False  # Marca o livro como indisponível
+        livro.disponivel = False 
         livro.save()
         messages.success(self.request, f'O livro "{livro.nome}" foi emprestado com sucesso!')
         return super().form_valid(form)
 
 ## FORMS ##
+
+class RegistroUsuarioView(CreateView):
+    model = User
+    form_class = RegistroUsuarioForm
+    template_name = 'registrar.html'
+    success_url = reverse_lazy('acervo:index') 
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=password)
+        if user:
+            login(self.request, user)
+        return response
+
 
 @method_decorator(login_required, name='dispatch')
 class LivroCreateView(CreateView):

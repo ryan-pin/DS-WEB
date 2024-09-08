@@ -134,3 +134,9 @@ MEDIA_URL = '/media/'
 #STATIC_ROOT = '/home/ryanpine/mysite/static'
 STATICFILES_DIRS = [ BASE_DIR / "static", ]
 STATIC_URL = '/static/'
+
+#login redirect 
+LOGIN_REDIRECT_URL = '/acervo/'
+
+#logout redirect 
+LOGOUT_REDIRECT_URL = '/acervo/'

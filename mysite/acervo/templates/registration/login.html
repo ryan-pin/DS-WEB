@@ -7,6 +7,6 @@
         {{form}}
         <button type="submit" id="botao">Login</button>
         <input type="hidden" name="next" value="{{ next }}"/>
-        <p> Nao tem uma conta? Crie uma <a href="/register">aqui</a></p>
+        <p> Nao tem uma conta? Crie uma <a href="{% url 'acervo:registrar' %}">aqui</a></p>
     </form>
 {% endblock %}

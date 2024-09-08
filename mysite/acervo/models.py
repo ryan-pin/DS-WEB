@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class ContatoPessoal(models.Model):
     email = models.CharField(max_length=100, unique=True)
     telefone = models.CharField(max_length=50, blank=True, null=True)
-    usuario = models.OneToOneField(User, on_delete=models.PROTECT)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self): #overwrite
         return "{} ".format(self.email)
