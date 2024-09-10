@@ -31,7 +31,7 @@ class Listarlivros(View):
         livros = Livro.objects.all()
         return render(request, "acervo/listar_livros.html", {'livros': livros})
 
-
+@method_decorator(login_required, name='dispatch')
 class EmprestimoLivroView(UpdateView):
     model = Livro
     form_class = EmprestimoLivroForm
@@ -40,7 +40,7 @@ class EmprestimoLivroView(UpdateView):
 
     def form_valid(self, form):
         livro = form.save(commit=False)
-        livro.disponivel = False 
+        livro.disponivel = False
         livro.save()
         messages.success(self.request, f'O livro "{livro.nome}" foi emprestado com sucesso!')
         return super().form_valid(form)
@@ -51,7 +51,7 @@ class RegistroUsuarioView(CreateView):
     model = User
     form_class = RegistroUsuarioForm
     template_name = 'registrar.html'
-    success_url = reverse_lazy('acervo:index') 
+    success_url = reverse_lazy('acervo:index')
 
     def form_valid(self, form):
         response = super().form_valid(form)
