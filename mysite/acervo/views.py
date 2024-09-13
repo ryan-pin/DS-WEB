@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.views import View
@@ -16,7 +16,7 @@ from django.contrib.auth import login, authenticate
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        livros = Livro.objects.all()
+        livros = Livro.objects.filter(disponivel=True)
         return render(request, "acervo/index.html", {'livros': livros})
 
 class ItemView(View):
@@ -29,7 +29,15 @@ class ItemView(View):
 class Listarlivros(View):
     def get(self, request, *args, **kwargs):
         livros = Livro.objects.all()
-        return render(request, "acervo/listar_livros.html", {'livros': livros})
+        livros_disp = Livro.objects.filter(disponivel=True)
+        livros_indisp = Livro.objects.filter(disponivel=False)
+
+        context = {
+            'livros': livros,
+            'livros_disp': livros_disp,
+            'livros_indisp': livros_indisp,
+            }
+        return render(request, "acervo/listar_livros.html", context)
 
 @method_decorator(login_required, name='dispatch')
 class EmprestimoLivroView(UpdateView):
@@ -44,6 +52,17 @@ class EmprestimoLivroView(UpdateView):
         livro.save()
         messages.success(self.request, f'O livro "{livro.nome}" foi emprestado com sucesso!')
         return super().form_valid(form)
+
+@method_decorator(login_required, name='dispatch')
+class DevolverLivroView(View):
+    def post(self, request, *args, **kwargs):
+        livro_id = kwargs['pk']
+        livro = get_object_or_404(Livro, pk = livro_id)
+        livro.disponivel = True
+        livro.contato_pessoal = None
+        livro.save()
+        return redirect("acervo:index")
+
 
 ## FORMS ##
 
